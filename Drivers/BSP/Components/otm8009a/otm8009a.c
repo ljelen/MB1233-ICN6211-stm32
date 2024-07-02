@@ -187,6 +187,7 @@ __weak int32_t DSI_IO_ReadCmd(uint32_t Reg, uint8_t *pData, uint32_t Size)
   */
 uint8_t OTM8009A_Init(uint32_t ColorCoding, uint32_t orientation)
 {
+  return 0;
   /* Enable CMD2 to access vendor specific commands                               */
   /* Enter in command 2 mode and set EXTC to enable address shift function (0x00) */
   DSI_IO_WriteCmd(0, (uint8_t *)ShortRegData1);

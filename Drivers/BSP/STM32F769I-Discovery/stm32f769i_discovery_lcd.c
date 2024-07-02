@@ -302,7 +302,7 @@ uint8_t BSP_LCD_InitEx(LCD_OrientationTypeDef orientation)
   BSP_LCD_Reset();
 
   /* Check the connected monitor */
-  read_id = LCD_IO_GetID();
+  read_id = LCD_DSI_ID;
 
 #if defined(USE_LCD_HDMI)   
   if(read_id == ADV7533_ID)
@@ -341,7 +341,7 @@ uint8_t BSP_LCD_InitEx(LCD_OrientationTypeDef orientation)
   laneByteClk_kHz = 62500; /* 500 MHz / 8 = 62.5 MHz = 62500 kHz */
 
   /* Set number of Lanes */
-  hdsi_discovery.Init.NumberOfLanes = DSI_TWO_DATA_LANES;
+  hdsi_discovery.Init.NumberOfLanes = DSI_ONE_DATA_LANE;
 
   /* TXEscapeCkdiv = f(LaneByteClk)/15.62 = 4 */
   hdsi_discovery.Init.TXEscapeCkdiv = laneByteClk_kHz/15620; 
@@ -2004,7 +2004,7 @@ static LCD_Driver_t Driver_Type(LCD_Driver_t Lcd_type)
   else 
   {
     /* Read the OTM8009A ID */
-    read_id = OTM8009A_ReadID();
+    read_id = OTM8009A_ID;
     if(read_id == OTM8009A_ID)
     {
       Lcd_type= LCD_CTRL_OTM8009A;
